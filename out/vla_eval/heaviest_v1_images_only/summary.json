@@ -1,0 +1,710 @@
+{
+  "policy": "outputs/vla/heaviest_v1_images_only/checkpoints/last/pretrained_model",
+  "images_only": true,
+  "n": 50,
+  "success_rate": 0.26,
+  "probed_all_three": 1.0,
+  "made_a_choice": 0.76,
+  "episodes": [
+    {
+      "goal": "lightest",
+      "task": "push the lightest one",
+      "masses": [
+        0.09174910975993911,
+        0.19154323525619193,
+        0.5968237862074803
+      ],
+      "probed": 3,
+      "chosen": 1,
+      "truth": 0,
+      "success": false,
+      "t_end": 16.822999999997577
+    },
+    {
+      "goal": "heaviest",
+      "task": "find the heaviest box and push it",
+      "masses": [
+        0.07502897897761197,
+        0.1932238410990908,
+        0.49335750594414285
+      ],
+      "probed": 3,
+      "chosen": 2,
+      "truth": 2,
+      "success": true,
+      "t_end": 15.134999999997051
+    },
+    {
+      "goal": "heaviest",
+      "task": "find the heaviest box and push it",
+      "masses": [
+        0.13282986331963867,
+        0.2317940446619224,
+        0.5828316708922958
+      ],
+      "probed": 3,
+      "chosen": 0,
+      "truth": 2,
+      "success": false,
+      "t_end": 22.671000000004724
+    },
+    {
+      "goal": "lightest",
+      "task": "push the lightest box",
+      "masses": [
+        0.07352242500153966,
+        0.340739217394794,
+        0.2509552516945215
+      ],
+      "probed": 3,
+      "chosen": -1,
+      "truth": 0,
+      "success": false,
+      "t_end": 30.00000000001368
+    },
+    {
+      "goal": "lightest",
+      "task": "push the lightest one",
+      "masses": [
+        0.26751973741831486,
+        0.10718672581971349,
+        0.43484123557352716
+      ],
+      "probed": 3,
+      "chosen": 2,
+      "truth": 1,
+      "success": false,
+      "t_end": 18.450999999999567
+    },
+    {
+      "goal": "heaviest",
+      "task": "which box is heaviest? push it",
+      "masses": [
+        0.20618035024524012,
+        0.406050356459983,
+        0.07493690001339891
+      ],
+      "probed": 3,
+      "chosen": 2,
+      "truth": 1,
+      "success": false,
+      "t_end": 16.164999999996773
+    },
+    {
+      "goal": "heaviest",
+      "task": "push the heaviest one",
+      "masses": [
+        0.19121307099312965,
+        0.08258754496183425,
+        0.13467009969121566
+      ],
+      "probed": 3,
+      "chosen": 1,
+      "truth": 0,
+      "success": false,
+      "t_end": 17.294999999998154
+    },
+    {
+      "goal": "heaviest",
+      "task": "which box is heaviest? push it",
+      "masses": [
+        0.11624922397815345,
+        0.5164468216348217,
+        0.0795281135882122
+      ],
+      "probed": 3,
+      "chosen": 1,
+      "truth": 1,
+      "success": true,
+      "t_end": 16.256999999996886
+    },
+    {
+      "goal": "heaviest",
+      "task": "which box is heaviest? push it",
+      "masses": [
+        0.569075266187417,
+        0.20505402869685166,
+        0.1524754042194109
+      ],
+      "probed": 3,
+      "chosen": 1,
+      "truth": 0,
+      "success": false,
+      "t_end": 16.64499999999736
+    },
+    {
+      "goal": "lightest",
+      "task": "find the lightest box and push it",
+      "masses": [
+        0.38054884351331314,
+        0.24194509874569758,
+        0.5299926561668848
+      ],
+      "probed": 3,
+      "chosen": 2,
+      "truth": 1,
+      "success": false,
+      "t_end": 18.122999999999166
+    },
+    {
+      "goal": "heaviest",
+      "task": "find the heaviest box and push it",
+      "masses": [
+        0.5689480778981755,
+        0.11095785855634312,
+        0.4262636790764853
+      ],
+      "probed": 3,
+      "chosen": 2,
+      "truth": 0,
+      "success": false,
+      "t_end": 24.765000000007284
+    },
+    {
+      "goal": "heaviest",
+      "task": "push the heaviest one",
+      "masses": [
+        0.07054727238148666,
+        0.1741106627818714,
+        0.2293428368828812
+      ],
+      "probed": 3,
+      "chosen": -1,
+      "truth": 2,
+      "success": false,
+      "t_end": 30.00000000001368
+    },
+    {
+      "goal": "heaviest",
+      "task": "find the heaviest box and push it",
+      "masses": [
+        0.12018976724407124,
+        0.07053353069718367,
+        0.27332963095515367
+      ],
+      "probed": 3,
+      "chosen": 0,
+      "truth": 2,
+      "success": false,
+      "t_end": 17.522999999998433
+    },
+    {
+      "goal": "heaviest",
+      "task": "push the heaviest one",
+      "masses": [
+        0.5356780649247539,
+        0.12494911689324838,
+        0.1863844134510098
+      ],
+      "probed": 3,
+      "chosen": 1,
+      "truth": 0,
+      "success": false,
+      "t_end": 17.458999999998355
+    },
+    {
+      "goal": "heaviest",
+      "task": "which box is heaviest? push it",
+      "masses": [
+        0.2041819195396487,
+        0.26575254525324743,
+        0.4602684567222007
+      ],
+      "probed": 3,
+      "chosen": 2,
+      "truth": 2,
+      "success": true,
+      "t_end": 18.471999999999593
+    },
+    {
+      "goal": "heaviest",
+      "task": "find the heaviest box and push it",
+      "masses": [
+        0.1542610959690576,
+        0.4232568600060396,
+        0.11339248841471308
+      ],
+      "probed": 3,
+      "chosen": 2,
+      "truth": 1,
+      "success": false,
+      "t_end": 17.082999999997895
+    },
+    {
+      "goal": "lightest",
+      "task": "push the lightest box",
+      "masses": [
+        0.23059562055075294,
+        0.40892223154374496,
+        0.07859668417618294
+      ],
+      "probed": 3,
+      "chosen": 2,
+      "truth": 2,
+      "success": true,
+      "t_end": 17.31499999999818
+    },
+    {
+      "goal": "heaviest",
+      "task": "which box is heaviest? push it",
+      "masses": [
+        0.12456465947631201,
+        0.2336807837236743,
+        0.49009546594587833
+      ],
+      "probed": 3,
+      "chosen": -1,
+      "truth": 2,
+      "success": false,
+      "t_end": 30.00000000001368
+    },
+    {
+      "goal": "heaviest",
+      "task": "push the heaviest box",
+      "masses": [
+        0.5944925454613019,
+        0.17188311090174227,
+        0.07382394899754652
+      ],
+      "probed": 3,
+      "chosen": 2,
+      "truth": 0,
+      "success": false,
+      "t_end": 15.98399999999658
+    },
+    {
+      "goal": "lightest",
+      "task": "push the lightest box",
+      "masses": [
+        0.11719955021653504,
+        0.07021476286697757,
+        0.24886179824686214
+      ],
+      "probed": 3,
+      "chosen": 1,
+      "truth": 1,
+      "success": true,
+      "t_end": 16.9219999999977
+    },
+    {
+      "goal": "lightest",
+      "task": "push the lightest one",
+      "masses": [
+        0.070831770630228,
+        0.2605332331528607,
+        0.1254395559228436
+      ],
+      "probed": 3,
+      "chosen": 1,
+      "truth": 0,
+      "success": false,
+      "t_end": 15.049999999997098
+    },
+    {
+      "goal": "lightest",
+      "task": "push the lightest one",
+      "masses": [
+        0.35339414227389326,
+        0.187866488315777,
+        0.11409635580092076
+      ],
+      "probed": 3,
+      "chosen": -1,
+      "truth": 2,
+      "success": false,
+      "t_end": 30.00000000001368
+    },
+    {
+      "goal": "lightest",
+      "task": "push the lightest box",
+      "masses": [
+        0.1503377135485458,
+        0.20581495197419897,
+        0.4912640949652587
+      ],
+      "probed": 3,
+      "chosen": 2,
+      "truth": 0,
+      "success": false,
+      "t_end": 16.278999999996913
+    },
+    {
+      "goal": "lightest",
+      "task": "push the lightest one",
+      "masses": [
+        0.34985174608349595,
+        0.20105802570241096,
+        0.556056918218695
+      ],
+      "probed": 3,
+      "chosen": 2,
+      "truth": 1,
+      "success": false,
+      "t_end": 13.209999999998118
+    },
+    {
+      "goal": "lightest",
+      "task": "which box is lightest? push it",
+      "masses": [
+        0.13382977612359337,
+        0.267975157519223,
+        0.19615900268742892
+      ],
+      "probed": 3,
+      "chosen": 1,
+      "truth": 0,
+      "success": false,
+      "t_end": 16.13699999999674
+    },
+    {
+      "goal": "heaviest",
+      "task": "push the heaviest one",
+      "masses": [
+        0.08915117850468691,
+        0.11770197714393651,
+        0.3198534330574408
+      ],
+      "probed": 3,
+      "chosen": -1,
+      "truth": 2,
+      "success": false,
+      "t_end": 30.00000000001368
+    },
+    {
+      "goal": "lightest",
+      "task": "push the lightest one",
+      "masses": [
+        0.1610673322425429,
+        0.09487341288678462,
+        0.23333972858792076
+      ],
+      "probed": 3,
+      "chosen": 2,
+      "truth": 1,
+      "success": false,
+      "t_end": 30.00000000001368
+    },
+    {
+      "goal": "heaviest",
+      "task": "which box is heaviest? push it",
+      "masses": [
+        0.14626534113475642,
+        0.5650358357041041,
+        0.08709140048575718
+      ],
+      "probed": 3,
+      "chosen": -1,
+      "truth": 1,
+      "success": false,
+      "t_end": 30.00000000001368
+    },
+    {
+      "goal": "lightest",
+      "task": "which box is lightest? push it",
+      "masses": [
+        0.28259888507929665,
+        0.072366929633012,
+        0.17715004987184474
+      ],
+      "probed": 3,
+      "chosen": -1,
+      "truth": 1,
+      "success": false,
+      "t_end": 30.00000000001368
+    },
+    {
+      "goal": "heaviest",
+      "task": "find the heaviest box and push it",
+      "masses": [
+        0.4131237126968019,
+        0.30437309035566823,
+        0.11488069908482455
+      ],
+      "probed": 3,
+      "chosen": 2,
+      "truth": 0,
+      "success": false,
+      "t_end": 12.819999999998334
+    },
+    {
+      "goal": "heaviest",
+      "task": "push the heaviest one",
+      "masses": [
+        0.081465664494181,
+        0.262283056433907,
+        0.5876897944988947
+      ],
+      "probed": 3,
+      "chosen": 0,
+      "truth": 2,
+      "success": false,
+      "t_end": 17.939999999998943
+    },
+    {
+      "goal": "heaviest",
+      "task": "find the heaviest box and push it",
+      "masses": [
+        0.3876031447165298,
+        0.10549363478308599,
+        0.1403481500732686
+      ],
+      "probed": 3,
+      "chosen": 2,
+      "truth": 0,
+      "success": false,
+      "t_end": 16.122999999996722
+    },
+    {
+      "goal": "heaviest",
+      "task": "find the heaviest box and push it",
+      "masses": [
+        0.10452567882261551,
+        0.2817669817242935,
+        0.39380079926878664
+      ],
+      "probed": 3,
+      "chosen": 2,
+      "truth": 2,
+      "success": true,
+      "t_end": 16.57999999999728
+    },
+    {
+      "goal": "heaviest",
+      "task": "find the heaviest box and push it",
+      "masses": [
+        0.09650806026212665,
+        0.2083670422154372,
+        0.3540623889900281
+      ],
+      "probed": 3,
+      "chosen": 2,
+      "truth": 2,
+      "success": true,
+      "t_end": 27.29000000001037
+    },
+    {
+      "goal": "lightest",
+      "task": "push the lightest box",
+      "masses": [
+        0.0734124893302707,
+        0.09713638236574805,
+        0.421818018125691
+      ],
+      "probed": 3,
+      "chosen": 0,
+      "truth": 0,
+      "success": true,
+      "t_end": 17.39099999999827
+    },
+    {
+      "goal": "lightest",
+      "task": "find the lightest box and push it",
+      "masses": [
+        0.07542112322082514,
+        0.2631803132697518,
+        0.5758810191738216
+      ],
+      "probed": 3,
+      "chosen": 0,
+      "truth": 0,
+      "success": true,
+      "t_end": 18.333999999999424
+    },
+    {
+      "goal": "heaviest",
+      "task": "which box is heaviest? push it",
+      "masses": [
+        0.34773310958145753,
+        0.07547421765462425,
+        0.25994071944276903
+      ],
+      "probed": 3,
+      "chosen": -1,
+      "truth": 0,
+      "success": false,
+      "t_end": 30.00000000001368
+    },
+    {
+      "goal": "lightest",
+      "task": "find the lightest box and push it",
+      "masses": [
+        0.18354050598796207,
+        0.09097966904275182,
+        0.38676788956389907
+      ],
+      "probed": 3,
+      "chosen": -1,
+      "truth": 1,
+      "success": false,
+      "t_end": 30.00000000001368
+    },
+    {
+      "goal": "lightest",
+      "task": "push the lightest one",
+      "masses": [
+        0.0788697516843195,
+        0.49141399141812153,
+        0.14115947995071576
+      ],
+      "probed": 3,
+      "chosen": 2,
+      "truth": 0,
+      "success": false,
+      "t_end": 16.590999999997294
+    },
+    {
+      "goal": "heaviest",
+      "task": "which box is heaviest? push it",
+      "masses": [
+        0.35473588391953215,
+        0.5453691219014173,
+        0.10318445849614273
+      ],
+      "probed": 3,
+      "chosen": 2,
+      "truth": 1,
+      "success": false,
+      "t_end": 16.883999999997652
+    },
+    {
+      "goal": "lightest",
+      "task": "push the lightest box",
+      "masses": [
+        0.08669922998851169,
+        0.527030559189438,
+        0.3634218274428918
+      ],
+      "probed": 3,
+      "chosen": -1,
+      "truth": 0,
+      "success": false,
+      "t_end": 30.00000000001368
+    },
+    {
+      "goal": "heaviest",
+      "task": "push the heaviest one",
+      "masses": [
+        0.4125840058611495,
+        0.1088555927860001,
+        0.27741607655575173
+      ],
+      "probed": 3,
+      "chosen": -1,
+      "truth": 0,
+      "success": false,
+      "t_end": 30.00000000001368
+    },
+    {
+      "goal": "heaviest",
+      "task": "find the heaviest box and push it",
+      "masses": [
+        0.13753207979565907,
+        0.10441799900935987,
+        0.4915252894436841
+      ],
+      "probed": 3,
+      "chosen": 1,
+      "truth": 2,
+      "success": false,
+      "t_end": 16.224999999996847
+    },
+    {
+      "goal": "lightest",
+      "task": "push the lightest one",
+      "masses": [
+        0.3268619520141792,
+        0.15516523129437917,
+        0.11189425740746481
+      ],
+      "probed": 3,
+      "chosen": 1,
+      "truth": 2,
+      "success": false,
+      "t_end": 22.681000000004737
+    },
+    {
+      "goal": "heaviest",
+      "task": "find the heaviest box and push it",
+      "masses": [
+        0.20469689079302145,
+        0.07806190841902608,
+        0.11343220148021042
+      ],
+      "probed": 3,
+      "chosen": 0,
+      "truth": 0,
+      "success": true,
+      "t_end": 16.04899999999663
+    },
+    {
+      "goal": "lightest",
+      "task": "which box is lightest? push it",
+      "masses": [
+        0.26928678437721676,
+        0.08041614602108742,
+        0.11151487681170344
+      ],
+      "probed": 3,
+      "chosen": -1,
+      "truth": 1,
+      "success": false,
+      "t_end": 30.00000000001368
+    },
+    {
+      "goal": "heaviest",
+      "task": "find the heaviest box and push it",
+      "masses": [
+        0.5828917689252857,
+        0.421295354551671,
+        0.13111984833083695
+      ],
+      "probed": 3,
+      "chosen": 1,
+      "truth": 0,
+      "success": false,
+      "t_end": 15.871999999996643
+    },
+    {
+      "goal": "lightest",
+      "task": "which box is lightest? push it",
+      "masses": [
+        0.0823018914732126,
+        0.29476869057038346,
+        0.21807671002139228
+      ],
+      "probed": 3,
+      "chosen": 0,
+      "truth": 0,
+      "success": true,
+      "t_end": 17.484999999998386
+    },
+    {
+      "goal": "heaviest",
+      "task": "push the heaviest one",
+      "masses": [
+        0.424027168000563,
+        0.15581447476706298,
+        0.2144992915013092
+      ],
+      "probed": 3,
+      "chosen": 0,
+      "truth": 0,
+      "success": true,
+      "t_end": 17.116999999997937
+    },
+    {
+      "goal": "heaviest",
+      "task": "which box is heaviest? push it",
+      "masses": [
+        0.3843768478492518,
+        0.18516596721130474,
+        0.14220026390267435
+      ],
+      "probed": 3,
+      "chosen": 0,
+      "truth": 0,
+      "success": true,
+      "t_end": 17.45499999999835
+    }
+  ]
+}

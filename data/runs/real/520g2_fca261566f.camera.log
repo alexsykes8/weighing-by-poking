@@ -1,0 +1,32 @@
+export: data/raw/520g_new_2/vids/fca261566f  (796 frames, RGB 1920x1440, 796 depth maps)
+intrinsics: fx=1596.5 fy=1596.5 cx=950.3 cy=720.1 px
+{
+  "tripod": {
+    "frames": 796,
+    "pos_dev_max_mm": 2.89802497971459,
+    "rot_dev_max_deg": 0.17067798206614634
+  },
+  "gravity": {
+    "image_up_dot_world_up": -0.05885385246322982,
+    "up_in_image_plane": 0.9998106225963505,
+    "camera_pitch_deg": -1.1150865137373058,
+    "camera_roll_deg": -93.37466690702881
+  },
+  "anchor_depth_m": 0.860955217198951,
+  "camera_pos_sim": [
+    0.46255930588139577,
+    0.8580789567034605,
+    1.025192927422125
+  ],
+  "yaw_off_plane_normal_deg": 1.4818939647643008e-16,
+  "mirrored": true,
+  "pitch_deg": -1.1150865137373058,
+  "axis_given": false,
+  "rgb_size": [
+    1920,
+    1440
+  ]
+}
+WARNING: note: camera roll -93 deg (iPad in portrait): fine, frames are used as recorded
+WARNING: no --axis-px given: assuming the camera is square to the push plane (yaw unverified).
+wrote data/raw/520g_new_2/vids/fca261566f/camera.json

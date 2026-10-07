@@ -1,0 +1,33 @@
+export: data/raw/230g_straight/vids/2aeb46edd4  (804 frames, RGB 1920x1440, 804 depth maps)
+intrinsics: fx=1598.3 fy=1598.3 cx=950.3 cy=720.1 px
+{
+  "tripod": {
+    "frames": 804,
+    "pos_dev_max_mm": 1.2188239630571038,
+    "rot_dev_max_deg": 0.6218855701365963
+  },
+  "gravity": {
+    "image_up_dot_world_up": -0.015482615386657593,
+    "up_in_image_plane": 0.9992883908755629,
+    "camera_pitch_deg": -2.16164384997062,
+    "camera_roll_deg": -90.88775574776729
+  },
+  "anchor_depth_m": 0.8514400551311287,
+  "camera_pos_sim": [
+    0.5257833955830051,
+    0.8475929954447987,
+    1.0414826123429106
+  ],
+  "yaw_off_plane_normal_deg": -5.0728772268196144e-17,
+  "mirrored": true,
+  "pitch_deg": -2.16164384997062,
+  "axis_given": false,
+  "rgb_size": [
+    1920,
+    1440
+  ]
+}
+WARNING: note: camera roll -91 deg (iPad in portrait): fine, frames are used as recorded
+WARNING: camera moved during the clip (1.2 mm, 0.62 deg max): tripod bumped, or ARKit tracking drift. Consider --frames to use a still segment.
+WARNING: no --axis-px given: assuming the camera is square to the push plane (yaw unverified).
+wrote data/raw/230g_straight/vids/2aeb46edd4/camera.json

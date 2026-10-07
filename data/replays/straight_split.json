@@ -1,0 +1,22 @@
+{
+  "note": "Straight-poke real clips, split by clip (2026-10-07). train: grip paths replayed in the straight training-sim (data/replays/straight_train). test: never seen in training; used for the estimator's real-world test.",
+  "train": [
+    "100gS_93aabf0c76",
+    "100gS_d6dd089295",
+    "160gS_18cb28b069",
+    "160gS_2b8600650f",
+    "160gS_7416d6f330",
+    "345gS_3e117f69fb",
+    "345gS_7c7e3afa1d",
+    "345gS_b95fa348ab",
+    "345gS_cb53c33ca3",
+    "345gS_eac7c10a93"
+  ],
+  "test": [
+    "100gS_b1798fd13e",
+    "160gS_55b53993ad",
+    "230gS_9fde79fbac",
+    "345gS_307756464f",
+    "345gS_89fc7a5d3b"
+  ]
+}

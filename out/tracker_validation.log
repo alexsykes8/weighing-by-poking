@@ -1,0 +1,7 @@
+fixed:square       1920x1440 drop 0/153 | world: centreline 2.1 mm (p95 3.8), tip 2.7, grip 2.0 mm, axis 0.60 deg | local tip 5.7 mm (p95 23.4; t5: 4.7) | kappa rms 0.103/m (gt max 1.08) | scale 1.001 | 138 ms/frame
+heavy:square       1920x1440 drop 0/153 | world: centreline 1.8 mm (p95 2.0), tip 1.5, grip 1.8 mm, axis 0.23 deg | local tip 1.8 mm (p95 3.2; t5: 1.5) | kappa rms 0.039/m (gt max 0.22) | scale 1.001 | 137 ms/frame
+light:square       1920x1440 drop 0/153 | world: centreline 1.7 mm (p95 1.9), tip 1.2, grip 1.8 mm, axis 0.19 deg | local tip 1.5 mm (p95 2.1; t5: 1.3) | kappa rms 0.030/m (gt max 0.08) | scale 1.000 | 137 ms/frame
+freespace:square   1920x1440 drop 0/153 | world: centreline 1.8 mm (p95 1.9), tip 1.7, grip 1.7 mm, axis 0.15 deg | local tip 1.6 mm (p95 2.2; t5: 1.6) | kappa rms 0.011/m (gt max 0.05) | scale 1.001 | 137 ms/frame
+fixed:oblique      1920x1440 drop 0/153 | world: centreline 2.1 mm (p95 4.6), tip 3.0, grip 1.9 mm, axis 0.48 deg | local tip 5.1 mm (p95 20.5; t5: 4.3) | kappa rms 0.115/m (gt max 1.08) | scale 1.000 | 150 ms/frame
+heavy:oblique      1920x1440 drop 0/153 | world: centreline 1.8 mm (p95 2.2), tip 1.6, grip 1.9 mm, axis 0.26 deg | local tip 2.0 mm (p95 4.0; t5: 1.6) | kappa rms 0.049/m (gt max 0.22) | scale 1.000 | 148 ms/frame
+wrote /home/alex/PycharmProjects/world_explorer/out/tracker/tracker_validation.json and overlays in /home/alex/PycharmProjects/world_explorer/out/tracker

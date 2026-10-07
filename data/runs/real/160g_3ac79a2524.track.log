@@ -1,0 +1,36 @@
+  frame 0: LOST (blue body not found)
+  frame 60: LOST (yellow/blue boundary not visible (shadow, occlusion or frame edge))
+  frame 120: LOST (yellow/blue boundary not visible (shadow, occlusion or frame edge))
+  frame 180: LOST (yellow/blue boundary not visible (shadow, occlusion or frame edge))
+  frame 240: ok
+  frame 300: ok
+  frame 360: LOST (blue/orange boundary not visible (shadow, occlusion or frame edge))
+  frame 420: ok
+  frame 480: ok
+  frame 540: ok
+  frame 600: ok
+  frame 660: ok
+  frame 720: ok
+  frame 780: ok
+{
+  "observation": "data/runs/real/160g_3ac79a2524.npz",
+  "trajectory": "data/runs/real/160g_3ac79a2524.grip.csv",
+  "frames": 813,
+  "dropped": 282,
+  "drop_reasons": [
+    "before the needle came to rest",
+    "blue body not found",
+    "blue body too short",
+    "blue/orange boundary not visible (shadow, occlusion or frame edge)",
+    "length implausible (>15% off): occluded, out of frame or far out of plane",
+    "stick out of the push plane (length off the clip median by >3%)",
+    "yellow/blue boundary not visible (shadow, occlusion or frame edge)"
+  ],
+  "length_scale_median": 0.9998384107946675,
+  "length_scale_p5_p95": [
+    0.9930953031215353,
+    1.0057241448387717
+  ],
+  "max_tip_drop_mm": 41.18251906788932,
+  "implied_plane_offset_mm": 10.65686563820012
+}

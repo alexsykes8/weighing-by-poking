@@ -1,0 +1,150 @@
+{
+  "alpha": 0.06,
+  "elastica_delta_over_L": 0.019991777750437114,
+  "rows": [
+    {
+      "layout": "uniform",
+      "N": 4,
+      "sim_over_elastica": 0.6563579826242822,
+      "sim_over_eb": 0.6560881456674957,
+      "chain_theory": 0.65625
+    },
+    {
+      "layout": "uniform",
+      "N": 6,
+      "sim_over_elastica": 0.7639789000535747,
+      "sim_over_eb": 0.7636648187947237,
+      "chain_theory": 0.7638888888888888
+    },
+    {
+      "layout": "uniform",
+      "N": 8,
+      "sim_over_elastica": 0.8203874376795934,
+      "sim_over_eb": 0.8200501661670505,
+      "chain_theory": 0.8203125
+    },
+    {
+      "layout": "uniform",
+      "N": 12,
+      "sim_over_elastica": 0.878527150708556,
+      "sim_over_eb": 0.8781659772345112,
+      "chain_theory": 0.8784722222222222
+    },
+    {
+      "layout": "uniform",
+      "N": 16,
+      "sim_over_elastica": 0.9082458956306945,
+      "sim_over_eb": 0.9078725044097773,
+      "chain_theory": 0.908203125
+    },
+    {
+      "layout": "uniform",
+      "N": 24,
+      "sim_over_elastica": 0.9383969795781324,
+      "sim_over_eb": 0.9380111928703749,
+      "chain_theory": 0.9383680555555556
+    },
+    {
+      "layout": "uniform",
+      "N": 32,
+      "sim_over_elastica": 0.9536343917690965,
+      "sim_over_eb": 0.9532423407710526,
+      "chain_theory": 0.95361328125
+    },
+    {
+      "layout": "uniform",
+      "N": 48,
+      "sim_over_elastica": 0.9689796158131656,
+      "sim_over_eb": 0.9685812562020373,
+      "chain_theory": 0.9689670138888888
+    },
+    {
+      "layout": "uniform",
+      "N": 64,
+      "sim_over_elastica": 0.9766926015304292,
+      "sim_over_eb": 0.9762910710146289,
+      "chain_theory": 0.9766845703125
+    },
+    {
+      "layout": "uniform",
+      "N": 96,
+      "sim_over_elastica": 0.9844377214723226,
+      "sim_over_eb": 0.9840330068410693,
+      "chain_theory": 0.9844292534722222
+    },
+    {
+      "layout": "midpoint",
+      "N": 4,
+      "sim_over_elastica": 0.9843680959150133,
+      "sim_over_eb": 0.9839634099076955,
+      "chain_theory": 0.984375
+    },
+    {
+      "layout": "midpoint",
+      "N": 6,
+      "sim_over_elastica": 0.9930522230480958,
+      "sim_over_eb": 0.9926439668877518,
+      "chain_theory": 0.9930555555555556
+    },
+    {
+      "layout": "midpoint",
+      "N": 8,
+      "sim_over_elastica": 0.9960915154367252,
+      "sim_over_eb": 0.9956820097853555,
+      "chain_theory": 0.99609375
+    },
+    {
+      "layout": "midpoint",
+      "N": 12,
+      "sim_over_elastica": 0.998262206220378,
+      "sim_over_eb": 0.9978518081709409,
+      "chain_theory": 0.9982638888888888
+    },
+    {
+      "layout": "midpoint",
+      "N": 16,
+      "sim_over_elastica": 0.9990216994089052,
+      "sim_over_eb": 0.9986109891223413,
+      "chain_theory": 0.9990234375
+    },
+    {
+      "layout": "midpoint",
+      "N": 24,
+      "sim_over_elastica": 0.9995638108625998,
+      "sim_over_eb": 0.9991528777072527,
+      "chain_theory": 0.9995659722222222
+    },
+    {
+      "layout": "midpoint",
+      "N": 32,
+      "sim_over_elastica": 0.9997531559733452,
+      "sim_over_eb": 0.9993421449758604,
+      "chain_theory": 0.999755859375
+    },
+    {
+      "layout": "midpoint",
+      "N": 48,
+      "sim_over_elastica": 0.9998879570460771,
+      "sim_over_eb": 0.9994768906301892,
+      "chain_theory": 0.9998914930555556
+    },
+    {
+      "layout": "midpoint",
+      "N": 64,
+      "sim_over_elastica": 0.9999348115460219,
+      "sim_over_eb": 0.9995237258676645,
+      "chain_theory": 0.99993896484375
+    },
+    {
+      "layout": "midpoint",
+      "N": 96,
+      "sim_over_elastica": 0.9999726374985989,
+      "sim_over_eb": 0.9995615362695203,
+      "chain_theory": 0.9999728732638888
+    }
+  ],
+  "orders": {
+    "uniform": 0.9764581930541552,
+    "midpoint": 1.9876061986553568
+  }
+}

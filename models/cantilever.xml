@@ -1,0 +1,27 @@
+<mujoco model="cantilever">
+  <extension><plugin plugin="mujoco.elasticity.cable"/></extension>
+  <compiler autolimits="true"/>
+  <option timestep="0.0005" integrator="implicitfast" solver="Newton" gravity="0 0 -9.81">
+    <flag island="enable"/>
+  </option>
+  <size memory="8M"/>
+  <worldbody>
+    <light pos="0 -1 2" dir="0 0.5 -1"/>
+    <geom name="clamp" type="box" size="0.02 0.02 0.02" pos="-0.02 0 1.0" rgba="0.3 0.3 0.3 1"
+          contype="0" conaffinity="0"/>
+    
+<body name="stick_mount" pos="0 0 1.0" quat="1 0 0 0">
+  <site name="stick_grip" size="0.006" rgba="1 0 1 0.6" group="3"/>
+  <composite prefix="stick_" type="cable" vertex="-0.0125 0 0 0.0125 0 0 0.0375 0 0 0.0625 0 0 0.0875 0 0 0.1125 0 0 0.1375 0 0 0.1625 0 0 0.1875 0 0 0.2125 0 0 0.2375 0 0 0.2625 0 0 0.2875 0 0 0.3125 0 0 0.3375 0 0 0.3625 0 0 0.3875 0 0 0.4125 0 0 0.4375 0 0 0.4625 0 0 0.4875 0 0 0.5125 0 0 0.5375 0 0 0.5625 0 0 0.5875 0 0 0.6 0 0" initial="none">
+    <plugin plugin="mujoco.elasticity.cable">
+      <config key="bend" value="2e+10"/>
+      <config key="twist" value="7.69230769e+09"/>
+      <config key="vmax" value="0"/>
+    </plugin>
+    <joint kind="main" damping="0.321699088" armature="0"/>
+    <geom type="capsule" size="0.004" density="1900.0" rgba="0.95 0.95 0.9 1"
+          condim="3" friction="0.6 0.005 0.0001" solref="0.004 1" group="1"/>
+  </composite>
+</body>
+  </worldbody>
+</mujoco>

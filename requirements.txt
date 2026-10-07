@@ -1,0 +1,8 @@
+mujoco==3.14.*
+numpy>=2.0
+scipy>=1.13
+matplotlib>=3.8
+scikit-learn>=1.5
+pytest>=8
+imageio>=2.34
+imageio-ffmpeg>=0.5

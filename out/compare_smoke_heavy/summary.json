@@ -1,0 +1,13 @@
+{
+  "a": "data/runs/demo_heavy.npz",
+  "b": "data/runs/demo_heavy_E1.6e10.npz",
+  "n": 510,
+  "tip_err_mm": {
+    "mean": 5.7591877788162815,
+    "rms": 9.200369943975877,
+    "p95": 18.18814288796613,
+    "max": 20.589604573189384
+  },
+  "tip_err_inplane_mm_rms": 9.200221785661265,
+  "centreline_err_mm_mean": 2.205387559662122
+}

@@ -1,0 +1,24 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+third_party/mujoco_menagerie/
+data/runs/dataset/
+data/raw/*
+!data/raw/.gitkeep
+out/*.mp4
+MUJOCO_LOG.TXT
+logs/
+checkpoints/
+data/sim_estimator/
+wandb/
+.venv-vla/
+outputs/
+# large or regenerable (2026-10-07)
+data/vla/
+data/runs/real_new/
+data/runs/real/*_debug/
+data/runs/real/_archive/
+out/**/*.mp4
+!out/demo/*.mp4
+*.tmp.npz

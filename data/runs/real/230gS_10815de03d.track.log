@@ -1,0 +1,39 @@
+  frame 0: LOST (blue body not found)
+  frame 60: LOST (yellow/blue boundary not visible (shadow, occlusion or frame edge))
+  frame 120: LOST (blue/orange boundary not visible (shadow, occlusion or frame edge))
+  frame 180: LOST (yellow/blue boundary not visible (shadow, occlusion or frame edge))
+  frame 240: ok
+  frame 300: ok
+  frame 360: ok
+  frame 420: ok
+  frame 480: LOST (blue/orange boundary not visible (shadow, occlusion or frame edge))
+  frame 540: ok
+  frame 600: ok
+  frame 660: ok
+  frame 720: ok
+  frame 780: ok
+  frame 840: ok
+WARNING: the needle never holds still for 0.4 s before the push (grip within 12 mm): baseline will be unreliable
+{
+  "observation": "data/runs/real/230gS_10815de03d.npz",
+  "trajectory": "data/runs/real/230gS_10815de03d.grip.csv",
+  "frames": 843,
+  "dropped": 337,
+  "drop_reasons": [
+    "blue body not found",
+    "blue body too short",
+    "blue/orange boundary not visible (shadow, occlusion or frame edge)",
+    "length implausible (>15% off): occluded, out of frame or far out of plane",
+    "needle runs out of frame",
+    "stick out of the push plane (length off the clip median by >3%)",
+    "yellow/blue boundary not visible (shadow, occlusion or frame edge)"
+  ],
+  "length_scale_median": 1.0006550845917441,
+  "length_scale_p5_p95": [
+    0.9793347421211418,
+    1.01018576722042
+  ],
+  "max_tip_drop_mm": 46.056265767931,
+  "implied_plane_offset_mm": 68.02017793601745
+}
+WARNING: tracked stick length is off by >3%: check --band-end/--tip-start, the camera alignment (plane depth), or whether the stick leaves the push plane.

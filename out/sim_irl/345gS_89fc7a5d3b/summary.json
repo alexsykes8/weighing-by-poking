@@ -1,0 +1,13 @@
+{
+  "a": "/home/alex/PycharmProjects/world_explorer/data/runs/real/345gS_89fc7a5d3b.npz",
+  "b": "out/sim_irl/345gS_89fc7a5d3b.sim.npz",
+  "n": 271,
+  "tip_err_mm": {
+    "mean": 6.001077963832043,
+    "rms": 7.424317463584668,
+    "p95": 15.52955080795293,
+    "max": 19.15846918501572
+  },
+  "tip_err_inplane_mm_rms": 7.22953931806481,
+  "centreline_err_mm_mean": 2.56365788000075
+}

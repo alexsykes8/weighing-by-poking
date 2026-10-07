@@ -1,0 +1,35 @@
+  frame 0: LOST (blue body not found)
+  frame 60: LOST (blue body not found)
+  frame 120: ok
+  frame 180: ok
+  frame 240: ok
+  frame 300: ok
+  frame 360: ok
+  frame 420: ok
+  frame 480: ok
+  frame 540: ok
+  frame 600: ok
+  frame 660: ok
+  frame 720: ok
+  frame 780: ok
+WARNING: the needle never holds still for 0.4 s before the push (grip within 12 mm): baseline will be unreliable
+{
+  "observation": "data/runs/real/160gS_7416d6f330.npz",
+  "trajectory": "data/runs/real/160gS_7416d6f330.grip.csv",
+  "frames": 800,
+  "dropped": 125,
+  "drop_reasons": [
+    "blue body not found",
+    "blue/orange boundary not visible (shadow, occlusion or frame edge)",
+    "length implausible (>15% off): occluded, out of frame or far out of plane",
+    "stick out of the push plane (length off the clip median by >3%)",
+    "yellow/blue boundary not visible (shadow, occlusion or frame edge)"
+  ],
+  "length_scale_median": 0.9999345177794176,
+  "length_scale_p5_p95": [
+    0.9899569410249325,
+    1.0063430676901344
+  ],
+  "max_tip_drop_mm": 41.14688319402844,
+  "implied_plane_offset_mm": 6.322067594672354
+}

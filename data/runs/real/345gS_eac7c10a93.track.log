@@ -1,0 +1,28 @@
+  frame 0: LOST (blue body not found)
+  frame 60: LOST (blue body not found)
+  frame 120: ok
+  frame 180: ok
+  frame 240: ok
+  frame 300: ok
+  frame 360: ok
+{
+  "observation": "data/runs/real/345gS_eac7c10a93.npz",
+  "trajectory": "data/runs/real/345gS_eac7c10a93.grip.csv",
+  "frames": 390,
+  "dropped": 140,
+  "drop_reasons": [
+    "before the needle came to rest",
+    "blue body not found",
+    "blue/orange boundary not visible (shadow, occlusion or frame edge)",
+    "length implausible (>15% off): occluded, out of frame or far out of plane",
+    "stick out of the push plane (length off the clip median by >3%)",
+    "yellow/blue boundary not visible (shadow, occlusion or frame edge)"
+  ],
+  "length_scale_median": 0.9995886917062671,
+  "length_scale_p5_p95": [
+    0.9920532795776221,
+    1.0210676002814565
+  ],
+  "max_tip_drop_mm": 55.636915569338235,
+  "implied_plane_offset_mm": 12.145204920154363
+}

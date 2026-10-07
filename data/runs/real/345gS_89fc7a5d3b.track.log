@@ -1,0 +1,29 @@
+  frame 0: LOST (blue body not found)
+  frame 60: LOST (blue body not found)
+  frame 120: LOST (blue body not found)
+  frame 180: ok
+  frame 240: ok
+  frame 300: ok
+  frame 360: ok
+  frame 420: ok
+  frame 480: ok
+{
+  "observation": "data/runs/real/345gS_89fc7a5d3b.npz",
+  "trajectory": "data/runs/real/345gS_89fc7a5d3b.grip.csv",
+  "frames": 519,
+  "dropped": 247,
+  "drop_reasons": [
+    "blue body not found",
+    "blue/orange boundary not visible (shadow, occlusion or frame edge)",
+    "length implausible (>15% off): occluded, out of frame or far out of plane",
+    "stick out of the push plane (length off the clip median by >3%)",
+    "yellow/blue boundary not visible (shadow, occlusion or frame edge)"
+  ],
+  "length_scale_median": 1.0001783810218718,
+  "length_scale_p5_p95": [
+    0.9843928332027965,
+    1.0109211060013517
+  ],
+  "max_tip_drop_mm": 67.1607711875531,
+  "implied_plane_offset_mm": 13.184871645467
+}

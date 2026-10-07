@@ -1,0 +1,13 @@
+{
+  "a": "data/runs/real/520g_b8ebc098df.npz",
+  "b": "data/runs/real/520g_b8ebc098df.sim.npz",
+  "n": 231,
+  "tip_err_mm": {
+    "mean": 11.726481781944596,
+    "rms": 13.01349832730629,
+    "p95": 24.900724166197374,
+    "max": 30.023113614211663
+  },
+  "tip_err_inplane_mm_rms": 12.652482756081238,
+  "centreline_err_mm_mean": 4.814387523198666
+}
