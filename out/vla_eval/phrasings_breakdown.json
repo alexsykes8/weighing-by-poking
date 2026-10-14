@@ -1,0 +1,126 @@
+{
+  "full": {
+    "push the box that weighs the least": {
+      "n": 22,
+      "success": 0.22727272727272727,
+      "no_choice": 0.22727272727272727,
+      "opposite_extreme": 0.36363636363636365
+    },
+    "move the heaviest-feeling box": {
+      "n": 23,
+      "success": 0.4782608695652174,
+      "no_choice": 0.043478260869565216,
+      "opposite_extreme": 0.21739130434782608
+    },
+    "which one is heavier than the other two? push it": {
+      "n": 24,
+      "success": 0.5,
+      "no_choice": 0.20833333333333334,
+      "opposite_extreme": 0.125
+    },
+    "test each box and shove the least weighty one": {
+      "n": 24,
+      "success": 0.20833333333333334,
+      "no_choice": 0.5833333333333334,
+      "opposite_extreme": 0.08333333333333333
+    },
+    "push the least heavy box": {
+      "n": 23,
+      "success": 0.21739130434782608,
+      "no_choice": 0.043478260869565216,
+      "opposite_extreme": 0.5217391304347826
+    },
+    "push the box that weighs the most": {
+      "n": 18,
+      "success": 0.3333333333333333,
+      "no_choice": 0.2222222222222222,
+      "opposite_extreme": 0.2222222222222222
+    },
+    "move the lightest-feeling box": {
+      "n": 17,
+      "success": 0.7058823529411765,
+      "no_choice": 0.0,
+      "opposite_extreme": 0.0
+    },
+    "test each box and shove the weightiest one": {
+      "n": 16,
+      "success": 0.4375,
+      "no_choice": 0.1875,
+      "opposite_extreme": 0.125
+    },
+    "which one is lighter than the other two? push it": {
+      "n": 16,
+      "success": 0.25,
+      "no_choice": 0.3125,
+      "opposite_extreme": 0.3125
+    },
+    "push the box that is hardest to move": {
+      "n": 17,
+      "success": 0.29411764705882354,
+      "no_choice": 0.29411764705882354,
+      "opposite_extreme": 0.11764705882352941
+    }
+  },
+  "images_only": {
+    "push the box that weighs the least": {
+      "n": 22,
+      "success": 0.3181818181818182,
+      "no_choice": 0.2727272727272727,
+      "opposite_extreme": 0.36363636363636365
+    },
+    "move the heaviest-feeling box": {
+      "n": 23,
+      "success": 0.6521739130434783,
+      "no_choice": 0.0,
+      "opposite_extreme": 0.17391304347826086
+    },
+    "which one is heavier than the other two? push it": {
+      "n": 24,
+      "success": 0.25,
+      "no_choice": 0.3333333333333333,
+      "opposite_extreme": 0.16666666666666666
+    },
+    "test each box and shove the least weighty one": {
+      "n": 24,
+      "success": 0.3333333333333333,
+      "no_choice": 0.20833333333333334,
+      "opposite_extreme": 0.16666666666666666
+    },
+    "push the least heavy box": {
+      "n": 23,
+      "success": 0.30434782608695654,
+      "no_choice": 0.34782608695652173,
+      "opposite_extreme": 0.21739130434782608
+    },
+    "push the box that weighs the most": {
+      "n": 18,
+      "success": 0.5,
+      "no_choice": 0.1111111111111111,
+      "opposite_extreme": 0.16666666666666666
+    },
+    "move the lightest-feeling box": {
+      "n": 17,
+      "success": 0.4117647058823529,
+      "no_choice": 0.29411764705882354,
+      "opposite_extreme": 0.058823529411764705
+    },
+    "test each box and shove the weightiest one": {
+      "n": 16,
+      "success": 0.375,
+      "no_choice": 0.25,
+      "opposite_extreme": 0.1875
+    },
+    "which one is lighter than the other two? push it": {
+      "n": 16,
+      "success": 0.3125,
+      "no_choice": 0.4375,
+      "opposite_extreme": 0.0625
+    },
+    "push the box that is hardest to move": {
+      "n": 17,
+      "success": 0.47058823529411764,
+      "no_choice": 0.35294117647058826,
+      "opposite_extreme": 0.17647058823529413
+    }
+  }
+}

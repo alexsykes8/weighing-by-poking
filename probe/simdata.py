@@ -38,7 +38,7 @@ RANGES = {
                                                  # 10 mm already yaws the box 20-30 deg over a 12 cm push)
     "approach_speed": ["uniform", 0.08, 0.25],
     "hold": ["uniform", 0.3, 0.9],
-    # replays: this fraction of free-box rollouts follows a recorded real grip trajectory (the person's actual
+    # replays: this fraction of free-box rollouts follows a recorded real grip trajectory (my actual
     # pushing style) instead of a synthetic push, time-scaled; box, needle and friction randomised as usual
     "p_replay": 0.3,
     "replay_glob": "data/runs/real/*.grip.csv",

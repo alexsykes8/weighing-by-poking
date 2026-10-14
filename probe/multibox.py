@@ -1,6 +1,6 @@
 """Training-sim for "push the heaviest/lightest box": three identical-looking boxes in a row, a scripted expert.
 
-The expert probes every box with the standard push (the person's measured push style: angle, contact height,
+The expert probes every box with the standard push (my measured push style: angle, contact height,
 speed), runs the sim-trained mass estimator on each probe, keeps a running per-box summary, then pushes the
 chosen box 10 cm. Every frame is logged for a VLA: camera image, state, language instruction and the next grip
 target as the action.
@@ -47,7 +47,7 @@ VLA_CAMERA = CameraConfig(pos=(0.22, -0.95, 1.40), lookat=(0.38, 0.0, 0.84), res
 
 @dataclass
 class PushStyle:
-    """One probe/push, parameterised like the person's recorded pushes."""
+    """One probe/push, parameterised like my recorded pushes."""
     pitch_deg: float = 45.0
     contact_height: float = 0.025
     push_speed: float = 0.10
@@ -74,6 +74,13 @@ class EpisodeConfig:
     est_hz: float = 30.0
     ys: tuple = ROW_Y
     scene: SceneConfig = field(default_factory=lambda: SceneConfig(camera=VLA_CAMERA))
+    probe_order: tuple = (0, 1, 2)  # the arm always starts at box 0's approach pose, then probes in this order
+    # recovery demo: after probing, drift (unrecorded) to this grip offset from the last retract pose, then record
+    # only the recovery from there (go to the chosen box and push it); None = a normal demo
+    recovery_offset: tuple | None = None
+    # real-poke probes: per box, (repo-relative grip CSV, time scale) to replay my recorded straight poke
+    # there instead of the synthetic push; None (or a None entry) = synthetic
+    probe_replays: tuple | None = None
 
 
 # ---- scene --------------------------------------------------------------------------------------
@@ -128,6 +135,31 @@ def _traj(segs, R) -> GripTrajectory:
     t, p = _smooth(segs)
     from .geometry import mat_to_quat_wxyz
     return GripTrajectory(t, p, np.tile(mat_to_quat_wxyz(R), (len(t), 1))).validate()
+
+
+def _traj_q(segs, q0, q1) -> GripTrajectory:
+    """Like _traj, but the orientation turns from q0 to q1 (wxyz, normalised lerp) over the whole path."""
+    t, p = _smooth(segs)
+    q0, q1 = np.asarray(q0, float), np.asarray(q1, float)
+    if q0 @ q1 < 0:
+        q1 = -q1
+    u = (t / t[-1])[:, None]
+    q = (1 - u) * q0 + u * q1
+    return GripTrajectory(t, p, q / np.linalg.norm(q, axis=1, keepdims=True)).validate()
+
+
+def replay_probe(path, time_scale, box_pos, stick: StickParams, scene: SceneConfig) -> GripTrajectory:
+    """The person's recorded straight poke (grip CSV in the single-box scene's frame), moved onto a row box and
+    lifted so the unbent tip clears the table (as in the estimator's training replays, probe/simdata.py)."""
+    from pathlib import Path
+    from .io import load_trajectory
+    from .simdata import lift_to_clear_table
+    from .trajectory import replay_variant
+    tr = replay_variant(load_trajectory(Path(__file__).resolve().parent.parent / path), time_scale)
+    pos = tr.pos.copy()
+    pos[:, 0] += box_pos[0] - scene.object_pos[0]
+    pos[:, 1] += box_pos[1] - scene.object_pos[1]
+    return lift_to_clear_table(GripTrajectory(tr.t, pos, tr.quat).validate(), stick, scene, 0.003)
 
 
 def push_start_pose(face_x, y, stick: StickParams, style: PushStyle, scene: SceneConfig):
@@ -187,7 +219,8 @@ def needle_features(cl, arclen):
 
 
 def run_episode(cfg: EpisodeConfig, estimator: Estimator, render=True, rng=None):
-    """Probe all three boxes left to right, decide, push the chosen one. Returns the logged episode."""
+    """Probe all three boxes (in cfg.probe_order), decide, push the chosen one. Returns the logged episode.
+    With cfg.recovery_offset only the recovery from a hover pose is logged (see EpisodeConfig)."""
     rng = rng or np.random.default_rng()
     m, d, h, boxes = build_row_scene(cfg)
     sc, st, style = cfg.scene, cfg.stick, cfg.style
@@ -215,13 +248,13 @@ def run_episode(cfg: EpisodeConfig, estimator: Estimator, render=True, rng=None)
         d.time = 0.0
         return p
 
-    def run(traj: GripTrajectory, probe_buf=None):
+    def run(traj: GripTrajectory, probe_buf=None, record=True):
         fol = TrajectoryFollower(m, d, traj, site)
         t0 = d.time
         while d.time - t0 < fol.duration:
             tl = d.time - t0
             fol.command(tl)
-            if d.time + 1e-9 >= clock["next_rec"]:
+            if record and d.time + 1e-9 >= clock["next_rec"]:
                 mujoco.mj_forward(m, d)
                 cl, _, gp, _ = extract_frame(m, d, h, arclen_est)
                 log["state"].append(np.concatenate([gp, needle_features(cl, arclen_est), summary.ravel()]))
@@ -245,26 +278,53 @@ def run_episode(cfg: EpisodeConfig, estimator: Estimator, render=True, rng=None)
         return traj.pos[-1]
 
     R = grip_rotation(style.pitch_deg)
+    from .geometry import mat_to_quat_wxyz, quat_wxyz_to_mat
+    qR = mat_to_quat_wxyz(R)
     cur = place(R)
-    for i in range(3):
-        p0, _ = push_start_pose(d.xpos[boxes[i]][0] - hx, cfg.ys[i], st, style, sc)
-        if i > 0:
-            cur = run(_traj(transit_segs(cur, p0, style.lift), R))
+    cur_q = qR  # orientation at `cur` (a real-poke replay ends at its own, slightly different pitch)
+    rec = cfg.recovery_offset is None
+    for i in cfg.probe_order:
+        rp = cfg.probe_replays[i] if cfg.probe_replays else None
         buf = {"t": [], "grip": [], "cl": []}
-        clock["next_est"] = d.time
-        cur = run(_traj(push_segs(p0, cfg.probe_depth, style), R), probe_buf=buf)
+        if rp is not None:
+            tr = replay_probe(rp[0], rp[1], (d.xpos[boxes[i]][0], cfg.ys[i]), st, sc)
+            cur = run(_traj_q(transit_segs(cur, tr.pos[0], style.lift), cur_q, tr.quat[0]), record=rec)
+            clock["next_est"] = d.time
+            cur = run(tr, probe_buf=buf, record=rec)
+            cur_q = tr.quat[-1]
+            # back off until the tip is `standoff` short of the face (real clips can end still pushed in)
+            ax = quat_wxyz_to_mat(cur_q)[:, 0]
+            back = (cur[0] + st.length * ax[0]) - (d.xpos[boxes[i]][0] - hx - st.radius - style.standoff)
+            if back > 1e-3:
+                p_back = cur - np.array([back, 0.0, 0.0])
+                cur = run(_traj_q([(cur, p_back, back / style.approach_speed), (p_back, p_back, 0.2)], cur_q, cur_q),
+                          record=rec)
+        else:
+            p0, _ = push_start_pose(d.xpos[boxes[i]][0] - hx, cfg.ys[i], st, style, sc)
+            if np.linalg.norm(p0 - cur) > 1e-6:
+                segs = transit_segs(cur, p0, style.lift)
+                cur = run(_traj(segs, R) if cur_q is qR else _traj_q(segs, cur_q, qR), record=rec)
+            clock["next_est"] = d.time
+            cur = run(_traj(push_segs(p0, cfg.probe_depth, style), R), probe_buf=buf, record=rec)
+            cur_q = qR
         logm, sd, p_anch = estimator(np.array(buf["t"]), np.array(buf["grip"]), np.array(buf["cl"]), arclen_est,
                                      st, cfg.friction)
         summary[i] = (1.0, logm, sd)
-        probes.append({"logm": logm, "sd": sd, "p_anchored": p_anch})
+        probes.append({"box": int(i), "logm": logm, "sd": sd, "p_anchored": p_anch})
 
     # decide from the posteriors: probability each box is the heaviest (lightest), by sampling
     draws = rng.normal(summary[:, 1], np.maximum(summary[:, 2], 1e-3), size=(4000, 3))
     pick = draws.argmax(1) if cfg.goal == "heaviest" else draws.argmin(1)
     p_best = np.bincount(pick, minlength=3) / len(pick)
     chosen = int(np.argmax(p_best))
+    if not rec:  # drift to the hover pose like a lost policy, settle, and start recording there
+        hover = cur + np.asarray(cfg.recovery_offset)
+        segs = [(cur, hover, max(0.5, np.linalg.norm(hover - cur) / 0.15)), (hover, hover, 0.5)]
+        cur = run(_traj(segs, R) if cur_q is qR else _traj_q(segs, cur_q, cur_q), record=False)
+        clock["next_rec"] = d.time
     p0, _ = push_start_pose(d.xpos[boxes[chosen]][0] - hx, cfg.ys[chosen], st, style, sc)
-    cur = run(_traj(transit_segs(cur, p0, style.lift), R))
+    segs = transit_segs(cur, p0, style.lift)
+    cur = run(_traj(segs, R) if cur_q is qR else _traj_q(segs, cur_q, qR))
     run(_traj(push_segs(p0, cfg.final_depth, style), R))
     if renderer is not None:
         renderer.close()
@@ -272,11 +332,17 @@ def run_episode(cfg: EpisodeConfig, estimator: Estimator, render=True, rng=None)
     truth = int(np.argmax(cfg.masses) if cfg.goal == "heaviest" else np.argmin(cfg.masses))
     return {k: np.asarray(v, np.float32 if k != "image" else np.uint8) for k, v in log.items()} | {
         "task": cfg.instruction, "goal": cfg.goal, "masses": list(cfg.masses), "friction": cfg.friction,
-        "chosen": chosen, "truth": truth, "correct": chosen == truth, "p_best": p_best.tolist(), "probes": probes}
+        "chosen": chosen, "truth": truth, "correct": chosen == truth, "p_best": p_best.tolist(), "probes": probes,
+        "probe_order": [int(i) for i in cfg.probe_order],
+        "probe_replays": None if cfg.probe_replays is None else [None if r is None else [r[0], float(r[1])]
+                                                                  for r in cfg.probe_replays],
+        "recovery_offset": None if rec else [float(x) for x in cfg.recovery_offset]}
 
 
-def sample_episode(seed: int) -> EpisodeConfig:
-    """Randomised training-sim episode around the measured setup and the person's push style."""
+def sample_episode(seed: int, style: str = "angled") -> EpisodeConfig:
+    """Randomised training-sim episode around the measured setup and my push style."""
+    if style == "straight":
+        return sample_straight_episode(seed)
     rng = np.random.default_rng(seed)
     while True:  # like the real box set (100-520 g, neighbours 1.4-1.6x apart): near-ties carry no signal to imitate
         masses = tuple(float(np.exp(rng.uniform(np.log(0.07), np.log(0.6)))) for _ in range(3))
@@ -291,3 +357,28 @@ def sample_episode(seed: int) -> EpisodeConfig:
                       hit_offset=float(rng.uniform(-0.005, 0.005)))
     return EpisodeConfig(masses=masses, friction=float(rng.uniform(0.45, 0.65)), goal=goal,
                          instruction=str(rng.choice(INSTRUCTIONS[goal])), stick=stick, style=style)
+
+
+def sample_straight_episode(seed: int) -> EpisodeConfig:
+    """Straight pokes (the needle ~vertical, along the gripper's approach axis, tip low on the box face), with
+    the ranges of the straight estimator's training-sim (probe/simdata.py RANGES_STRAIGHT). Boxes 0.07-0.45 kg:
+    the straight estimator's range (heavier boxes need >110 mm of tip deflection and the tip skids). The tip
+    runs only 2-28 mm above the table, so it retracts further and lifts higher between boxes than an angled
+    push, and the final push is longer so a heavy box visibly moves."""
+    rng = np.random.default_rng(seed)
+    while True:
+        masses = tuple(float(np.exp(rng.uniform(np.log(0.07), np.log(0.45)))) for _ in range(3))
+        o = np.sort(masses)
+        if o[1] / o[0] >= MIN_MASS_RATIO and o[2] / o[1] >= MIN_MASS_RATIO:
+            break
+    goal = "heaviest" if rng.uniform() < 0.5 else "lightest"
+    stick = StickParams(young=float(np.exp(rng.uniform(np.log(3.5e10), np.log(5e10)))),
+                        length=float(rng.uniform(0.325, 0.343)), radius=float(rng.uniform(0.0017, 0.0018)),
+                        tip_friction=float(rng.uniform(0.10, 0.60)))
+    style = PushStyle(pitch_deg=float(rng.uniform(80, 90)), contact_height=float(rng.uniform(0.002, 0.028)),
+                      push_speed=float(rng.uniform(0.03, 0.10)), approach_speed=float(rng.uniform(0.05, 0.15)),
+                      standoff=0.04, retract=0.14, lift=0.11, hit_offset=float(rng.uniform(-0.005, 0.005)))
+    return EpisodeConfig(masses=masses, friction=float(rng.uniform(0.45, 0.65)), goal=goal,
+                         instruction=str(rng.choice(INSTRUCTIONS[goal])), stick=stick, style=style,
+                         probe_depth=0.09, final_depth=0.14,
+                         scene=SceneConfig(camera=VLA_CAMERA, exit_angle_deg=0.0))
