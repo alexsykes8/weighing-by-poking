@@ -1,4 +1,4 @@
-"""Drive the sim-IRL UR5e with the person's real grip paths, then score the sim against the video.
+"""Drive the sim-IRL UR5e with my real grip paths, then score the sim against the video.
 
     MUJOCO_GL=egl python scripts/replay_real.py data/usable/straight_*/*/track.npz --out out/sim_irl
 

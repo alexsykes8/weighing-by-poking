@@ -120,6 +120,36 @@
     "n": 380
   },
   {
+    "clip": "345gS_307756464f",
+    "ok": true,
+    "mass_kg": 0.345,
+    "style": "straight",
+    "pitch_deg": 86.61655014450871,
+    "lift_mm": 0.0,
+    "tip_err_mm_mean": 4.780225624729581,
+    "tip_err_mm_rms": 6.443684790213507,
+    "tip_err_mm_p95": 14.829760762023772,
+    "centreline_err_mm_mean": 1.96202946136511,
+    "peak_tip_dev_video_mm": 56.59677247019068,
+    "peak_tip_dev_sim_mm": 73.5859687803724,
+    "n": 294
+  },
+  {
+    "clip": "345gS_3e117f69fb",
+    "ok": true,
+    "mass_kg": 0.345,
+    "style": "straight",
+    "pitch_deg": 85.15554023098997,
+    "lift_mm": 0.6983261167017307,
+    "tip_err_mm_mean": 4.0980789784553915,
+    "tip_err_mm_rms": 4.85421199877341,
+    "tip_err_mm_p95": 9.510512618410985,
+    "centreline_err_mm_mean": 1.774924100838991,
+    "peak_tip_dev_video_mm": 56.93148247833382,
+    "peak_tip_dev_sim_mm": 50.093557239233505,
+    "n": 205
+  },
+  {
     "clip": "345gS_7c7e3afa1d",
     "ok": true,
     "mass_kg": 0.345,
