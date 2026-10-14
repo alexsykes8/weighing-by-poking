@@ -74,6 +74,8 @@ def main():
     ap.add_argument("--base-h", nargs=2, type=float, help="HSV hue range of the yellow base band (0..1)")
     ap.add_argument("--body-h", nargs=2, type=float, help="HSV hue range of the blue body (0..1)")
     ap.add_argument("--tip-h", nargs=2, type=float, help="HSV hue range of the orange tip (0..1; lo > hi wraps)")
+    ap.add_argument("--body-v", type=float, help="minimum HSV value of the blue body (0..1); raise it when something "
+                                                   "darker and blue is in shot, e.g. a navy sleeve (2026-10-14 clips: 0.55)")
     ap.add_argument("--debug", type=int, default=0, help="save an overlay every N frames to <out>_debug/")
     ap.add_argument("--out", required=True)
     ap.add_argument("--traj-out", help="grip trajectory CSV (default: alongside --out)")
@@ -85,6 +87,8 @@ def main():
     for part in ("base", "body", "tip"):
         if getattr(a, f"{part}_h"):
             getattr(colours, part).h = tuple(getattr(a, f"{part}_h"))
+    if a.body_v is not None:
+        colours.body.v_min = a.body_v
     mk = StickMarkings(length=a.length, band_end=a.band_end, tip_start=a.tip_start)
     plane = Plane(point=(0.0, a.plane_y, 0.0), normal=(0.0, 1.0, 0.0))
     # out-of-plane gate applied after the pass, relative to the clip's median length: a constant offset (needle
