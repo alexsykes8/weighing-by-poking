@@ -63,6 +63,22 @@ def resample(t, *arrays, rate=RATE_HZ):
     return tt, out
 
 
+REST_WINDOW_S = 0.4  # track_video.py trims real clips to start at the needle's first 0.4 s still window
+REST_MIN_FRAMES = 15  # dropped frames can leave 1-2 in that window, and single tip readings scatter 1-3 mm
+
+
+def zero_rest_shape(t, centreline, window: float = REST_WINDOW_S, min_frames: int = REST_MIN_FRAMES):
+    """Real clips only: subtract the needle's unloaded bend (stick-local z, median over the first `window` s,
+    widened to at least `min_frames` tracked frames) from every frame. Tracked needles read 1-6 mm off straight
+    at rest, always on the push-bend side, which the sim-trained estimator takes as force: +17-49% on light
+    (100-160 g) boxes, ~0 on 345 g. Axial x is kept."""
+    t, cl = np.asarray(t, float), np.array(centreline, float)
+    n = max(int(np.sum(t < t[0] + window)), min_frames)
+    rest = np.nanmedian(cl[:n, :, 2], axis=0)
+    cl[:, :, 2] -= rest
+    return cl
+
+
 def sequence_features(t, grip_pose, centreline, arclen, noise_m: float = 0.0, rng=None, rate=RATE_HZ):
     """(T,F) model input from contract arrays (sim or video). noise_m: iid tracker noise on centreline points."""
     t = np.asarray(t, float)

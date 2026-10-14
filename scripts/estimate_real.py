@@ -6,6 +6,8 @@
 The whole tracked observation is one probe (track_video.py already trims it to start once the needle is still).
 Stick parameters are the measured needle (StickParams defaults); friction is the measured static mu.
 Prints the estimate with its 1-sigma range and P(anchored) next to the scale reading stored in the clip's meta.
+The needle's rest bend (its shape over that first still 0.4 s) is subtracted first: see
+probe.estimator.zero_rest_shape. --no-rest-zero turns this off.
 """
 import argparse
 import json
@@ -13,6 +15,7 @@ import json
 import _bootstrap  # noqa: F401
 import numpy as np
 
+from probe.estimator import zero_rest_shape
 from probe.io import load_observation
 from probe.multibox import Estimator
 from probe.stick import StickParams
@@ -26,12 +29,17 @@ def main():
     ap.add_argument("--ckpt", default=str(CKPT))
     ap.add_argument("--friction", type=float, default=0.55)
     ap.add_argument("--json", help="also write the rows here")
+    ap.add_argument("--no-rest-zero", action="store_true", help="feed the tracked centreline as is")
     a = ap.parse_args()
     est, st = Estimator(a.ckpt), StickParams()
     rows = []
     for path in a.obs:
         o = load_observation(path)
-        logm, sd, p_anch = est(o.t, o.grip_pose, o.centreline, o.arclen, st, a.friction)
+        if "rest_trim_s" not in o.meta and not a.no_rest_zero:
+            print(f"note: {path} has no still window before the push; its rest bend is read off the first "
+                  f"0.4 s anyway")
+        cl = o.centreline if a.no_rest_zero else zero_rest_shape(o.t, o.centreline)
+        logm, sd, p_anch = est(o.t, o.grip_pose, cl, o.arclen, st, a.friction)
         true = o.meta.get("object_mass")
         r = {"clip": path, "true_kg": true, "est_kg": float(np.exp(logm)), "lo_kg": float(np.exp(logm - sd)),
              "hi_kg": float(np.exp(logm + sd)), "p_anchored": p_anch, "frames": len(o.t), "dur_s": float(o.t[-1])}
