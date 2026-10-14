@@ -6,6 +6,11 @@ third_party/mujoco_menagerie/
 data/runs/dataset/
 data/raw/*
 !data/raw/.gitkeep
+# bench videos stay local; their poke splits and camera calibrations are published
+!data/raw/bench/
+data/raw/bench/*/*
+!data/raw/bench/*/pokes.json
+!data/raw/bench/*/camera.json
 out/*.mp4
 MUJOCO_LOG.TXT
 logs/
@@ -20,5 +25,13 @@ data/runs/real_new/
 data/runs/real/*_debug/
 data/runs/real/_archive/
 out/**/*.mp4
-!out/demo/*.mp4
 *.tmp.npz
+.idea/
+
+# private notes
+brief.txt
+
+# my working notes for the README (not published)
+out/readme_kit/
+out/sim_irl_13clips_1007/
+archive/**/*.mp4

@@ -10,7 +10,7 @@ from dataclasses import dataclass, field
 import numpy as np
 
 # "free": a movable box whose mass is meta["object_mass"] (the mass-estimation experiment).
-# "heavy"/"light": the earlier 3-class protocol, kept for the baseline classifier (CLASSES).
+# "heavy"/"light": the earlier 3-class protocol (CLASSES).
 LABELS = ("fixed", "free", "heavy", "light", "freespace")
 CLASSES = ("fixed", "heavy", "light", "freespace")
 SOURCES = ("sim", "video")
