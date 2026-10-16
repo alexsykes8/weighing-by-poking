@@ -1,7 +1,5 @@
 # Weighing by Poking
 
-*Real pokes, a measured sim, and a touch signal the camera can't read*
-
 Three boxes look identical, so the robot pokes each one with a stick (a cheap knitting needle) and reads the weight
 from how it bends. A camera sees a poked box move, but can't read its weight finely from that; the stick's bend can.
 Every number that matters is checked against reality: replaying my own pokes in a simulation set to my measured bench
